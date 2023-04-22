@@ -2,7 +2,7 @@ name: BUILD GAME
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
     
 jobs:
   BuildAndroid:
