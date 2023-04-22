@@ -22,4 +22,10 @@ jobs:
         haxelib install openfl
 
     - name: Build APK
-      run: lime test android
+      run: lime build android
+
+    - name: Publish artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: My Game APK
+        path: path/to/apk/file
