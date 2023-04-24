@@ -15,11 +15,13 @@ jobs:
           sdk-version: '31'
       - name: Build C++ code
         run: |
+          mkdir mycppcode
           # Comandos para compilar o código C++
           cd mycppcode
           ./configure && make
       - name: Build APK
         run: |
+          mkdir myandroidapp
           # Comandos para construir o APK
           cd myandroidapp
           ./gradlew assembleDebug
