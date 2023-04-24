@@ -1,0 +1,30 @@
+name: Build APK
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v2
+        with:
+          sdk-version: '31'
+      - name: Build C++ code
+        run: |
+          # Comandos para compilar o código C++
+          cd mycppcode
+          ./configure && make
+      - name: Build APK
+        run: |
+          # Comandos para construir o APK
+          cd myandroidapp
+          ./gradlew assembleDebug
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug
+          path: myandroidapp/app/build/outputs/apk/debug/app-debug.apk
